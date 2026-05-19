@@ -1,9 +1,11 @@
 services:
   manager:
     build: .
+    image: cloakhq/cloakbrowser-manager:latest
     ports:
-      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:9080:9080"
     volumes:
-      - ~/.cloakbrowser-manager:/data
+      - /mnt/administration-share/cloakbrowser-manager/data:/data
+      - ./entrypoint.sh:/entrypoint.sh
     environment:
       - AUTH_TOKEN=${AUTH_TOKEN:-}
